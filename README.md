@@ -1,12 +1,41 @@
-# React + Vite
+# 100 Questions Game 🎲
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web application featuring 100 profound questions with a beautiful 3D dice rolling animation.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎲 **3D Dice Animation**: Realistic dice rolling with smooth animations
+- 🌍 **Bilingual Support**: Full English and Spanish translations
+- 💾 **Progress Saving**: LocalStorage persistence across sessions
+- 🎯 **Random Question Generator**: Get random questions from 100 available
+- 📱 **Question Browser**: View all questions in an organized dropdown
+- 🔄 **Reset Functionality**: Start over anytime with confirmation
+- 📱 **Responsive Design**: Works on desktop and mobile
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 18
+- Vite
+- Tailwind CSS
+- React Icons
+- CSS3 3D Transforms
+
+## Live Demo
+
+[Deployed on Netlify](https://your-site.netlify.app)
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## How to Play
+
+1. Click "Generate Question" to roll the dice and get a random question
+2. Answer the question with your partner
+3. Click "Complete" to mark it as done
+4. Switch between English and Spanish anytime
+5. Use "Show All Questions" to browse all available questions
+6. Your progress is automatically saved!
