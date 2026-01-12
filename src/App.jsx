@@ -354,28 +354,57 @@ function App() {
   }, [completedQuestions, language]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="h-screen w-screen bg-black p-4 overflow-hidden fixed inset-0">
       {/* Language Dropdown - Top Right */}
       <div className="absolute top-4 right-4">
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md bg-white shadow-sm"
+          className="px-3 py-2 border border-blue-700 rounded-md text-white shadow-sm"
+          style={{
+            backgroundImage: "url('/buttonWood.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
         >
-          <option value="english">English</option>
-          <option value="spanish">Spanish</option>
+          <option value="english" style={{ backgroundColor: "#1e293b", color: "#ffffff" }}>English</option>
+          <option value="spanish" style={{ backgroundColor: "#1e293b", color: "#ffffff" }}>Spanish</option>
         </select>
       </div>
 
       {/* Main Game Area - Center */}
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-4xl font-bold text-center mb-8">
+      <div 
+        className="flex flex-col items-center justify-center min-h-[90vh] rounded-xl p-8 max-w-5xl mx-auto shadow-2xl border-2 border-[#2a1a0f] relative overflow-hidden"
+      >
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/sakura.mp4" type="video/mp4" />
+        </video>
+        {/* Content overlay */}
+        <div className="relative z-10 w-full">
+        <h1 
+          className="text-4xl font-bold text-center mb-8 text-white"
+          style={{
+            textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 4px #000'
+          }}
+        >
           {translations[language].title}
         </h1>
 
         {/* Generator Area */}
         <div className="text-center mb-8">
-          <p className="text-lg mb-4">
+          <p 
+            className="text-lg mb-4 text-white"
+            style={{
+              textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 4px #000'
+            }}
+          >
             {translations[language].questionsRemaining}:{" "}
             {100 - completedQuestions.size}
           </p>
@@ -403,20 +432,20 @@ function App() {
           {/* Show All Questions Button */}
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <FaList size={18} className="list-icon" />
             {showDropdown
               ? translations[language].hideAllQuestions
               : translations[language].showAllQuestions}
-          </button>
+        </button>
         </div>
 
         {/* Questions Dropdown */}
         {showDropdown && (
-          <div className="w-full max-w-4xl max-h-96 overflow-y-auto border border-gray-300 rounded-lg bg-white shadow-lg">
+          <div className="w-full max-w-4xl max-h-96 overflow-y-auto border border-blue-800 rounded-lg bg-slate-800 shadow-lg">
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-4">
+              <h3 className="text-lg font-semibold mb-4 text-white">
                 {translations[language].allQuestions} (
                 {getAvailableQuestions().length}{" "}
                 {translations[language].remaining})
@@ -430,8 +459,8 @@ function App() {
                       key={questionNumber}
                       className={`p-2 rounded cursor-pointer transition-colors ${
                         isCompleted
-                          ? "bg-gray-200 text-gray-500 line-through"
-                          : "bg-gray-50 hover:bg-gray-100"
+                          ? "bg-slate-700 text-gray-500 line-through"
+                          : "bg-slate-700 hover:bg-slate-600 text-blue-100"
                       }`}
                       onClick={() => {
                         if (!isCompleted) {
@@ -451,11 +480,12 @@ function App() {
             </div>
           </div>
         )}
+        </div>
       </div>
 
       {/* Dice Rolling Animation */}
       {showDice && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
           <div className="text-center">
             <div className="mb-8 relative">
               <div className="dice-3d-container">
@@ -517,12 +547,12 @@ function App() {
 
       {/* Question Modal */}
       {showModal && currentQuestion && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 max-w-2xl mx-4 shadow-xl">
-            <h2 className="text-2xl font-bold mb-4">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-slate-800 rounded-lg p-8 max-w-2xl mx-4 shadow-xl border border-blue-800">
+            <h2 className="text-2xl font-bold mb-4 text-white">
               {translations[language].question} {currentQuestion.number}
             </h2>
-            <p className="text-lg mb-6">{currentQuestion.text}</p>
+            <p className="text-lg mb-6 text-blue-100">{currentQuestion.text}</p>
             <div className="flex gap-4 justify-center">
               <button
                 onClick={completeQuestion}
@@ -535,7 +565,7 @@ function App() {
                   setShowModal(false);
                   setCurrentQuestion(null);
                 }}
-                className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+                className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
               >
                 {translations[language].cancel}
               </button>
