@@ -356,11 +356,11 @@ function App() {
   return (
     <div className="h-screen w-screen bg-black p-4 overflow-hidden fixed inset-0">
       {/* Language Dropdown - Top Right */}
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-50">
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="px-3 py-2 border border-blue-700 rounded-md text-white shadow-sm"
+          className="px-2 py-1.5 sm:px-3 sm:py-2 text-sm sm:text-base border border-blue-700 rounded-md text-white shadow-sm z-50"
           style={{
             backgroundImage: "url('/buttonWood.jpg')",
             backgroundSize: "cover",
