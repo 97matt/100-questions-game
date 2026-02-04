@@ -376,16 +376,15 @@ function App() {
       <div 
         className="flex flex-col items-center justify-center min-h-[90vh] rounded-xl p-8 max-w-5xl mx-auto shadow-2xl border-2 border-[#2a1a0f] relative overflow-hidden"
       >
-        {/* Video Background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        {/* Static Background (frame extracted from sakura.mp4 @ ~1s) */}
+        <img
+          src="/sakura-bg.jpg"
+          alt=""
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/sakura.mp4" type="video/mp4" />
-        </video>
+          loading="eager"
+          decoding="async"
+        />
         {/* Content overlay */}
         <div className="relative z-10 w-full">
         <h1 
